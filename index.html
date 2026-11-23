@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alves Pezenti Odontologia</title>
+<meta name="description" content="Alves Pezenti Odontologia: facetas, lentes de contato dental e harmonização orofacial com precisão e naturalidade. Agende sua avaliação pelo WhatsApp (11) 98879-9334.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="Alves Pezenti Odontologia">
+<meta property="og:description" content="A arte de revelar sorrisos. Facetas, lentes e harmonização orofacial.">
+<meta property="og:image" content="img/logo-gold.png">
+<link rel="icon" href="img/monograma.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Marisa-Medium.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion')</script>
+<style>
+  @font-face{font-family:Marisa;font-weight:400 700;font-display:swap;src:url(fonts/Marisa-Medium.otf) format("opentype")}
+  /* Marca: preto, cinza #7C7C7C, branco e o gradiente dourado */
+  :root{
+    --bk:#0a0a0a; --bk2:#111110; --bk3:#191816; --line:rgba(255,255,255,.09);
+    --txt:#ebe7df; --mut:#8f8b84; --gray:#7c7c7c; --light:#f3f0ea; --ink:#141312;
+    --g1:#7d5a28; --g2:#c9a464; --g3:#f0dfb0;
+    --gold:linear-gradient(110deg,#7d5a28 0%,#b8924f 16%,#f5e6bb 30%,#c9a464 44%,#8a6530 60%,#ead39b 78%,#7d5a28 100%);
+    --disp:Marisa,Montserrat,sans-serif;
+    --pad:clamp(16px,4vw,56px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bk);color:var(--txt);font:300 16px/1.75 Montserrat,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,video{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  ::selection{background:var(--g2);color:#000}
+  .wrap{width:min(1320px,100% - var(--pad)*2);margin-inline:auto}
+  section{position:relative}
+
+  /* ouro "líquido" */
+  .gold-text{background:var(--gold);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+  .gold-bg{background:var(--gold);background-size:200% 100%;animation:shine 7s linear infinite}
+  @keyframes shine{to{background-position:200% 0}}
+  .mono{-webkit-mask:url(img/monograma-mask.png) center/contain no-repeat;mask:url(img/monograma-mask.png) center/contain no-repeat;aspect-ratio:420/440}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:14px;font:500 11px Montserrat;letter-spacing:.42em;text-transform:uppercase;color:var(--g2)}
+  .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+  .h2{font:400 clamp(34px,5.6vw,84px)/1.02 var(--disp);letter-spacing:.01em;text-transform:uppercase;margin:18px 0 24px}
+  .lead{color:var(--mut);max-width:560px;font-size:17px}
+  .line-mask{display:block;overflow:hidden;padding-bottom:.06em}
+  .line-mask>span{display:block}
+
+  .btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:18px 34px;border-radius:999px;font:500 12px Montserrat;letter-spacing:.22em;text-transform:uppercase;overflow:hidden;isolation:isolate;transition:color .4s}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-gold{color:#120d05}
+  .btn-gold::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--gold);background-size:200% 100%;animation:shine 7s linear infinite}
+  .btn-gold::after,.btn-line::after{content:"";position:absolute;inset:0;z-index:-1;background:#fff;transform:translateY(101%);border-radius:50% 50% 0 0;transition:transform .55s cubic-bezier(.7,0,.2,1),border-radius .55s}
+  .btn:hover::after{transform:none;border-radius:0}
+  .btn-line{border:1px solid rgba(201,164,100,.55);color:var(--g3)}
+  .btn-line:hover{color:#111}
+  .btn-dark{background:#0a0a0a;color:var(--g3)}
+  .btn-dark::after{content:"";position:absolute;inset:0;z-index:-1;background:#262320;transform:translateY(101%);transition:transform .5s cubic-bezier(.7,0,.2,1)}
+
+  /* ===== Loader ===== */
+  .loader{position:fixed;inset:0;z-index:200;background:var(--bk);display:none;place-items:center;clip-path:inset(0% 0% 0% 0%)}
+  .motion .loader{display:grid}
+  .loader-inner{display:grid;justify-items:center;gap:26px}
+  .loader-mono{position:relative;width:120px}
+  .loader-mono .mono{width:100%}
+  .loader-mono .base{background:#2a2622}
+  .loader-mono .fill{position:absolute;inset:0;clip-path:inset(100% 0 0 0)}
+  .loader-name{font:400 14px var(--disp);letter-spacing:.5em;color:var(--mut);text-indent:.5em}
+  .loader-count{position:absolute;right:var(--pad);bottom:var(--pad);font:400 clamp(60px,10vw,150px)/1 var(--disp);color:#1e1c19}
+
+  /* ===== Cursor ===== */
+  .cursor{position:fixed;left:0;top:0;z-index:300;pointer-events:none;display:none;mix-blend-mode:normal}
+  .has-cursor .cursor{display:block}
+  .has-cursor, .has-cursor a, .has-cursor button{cursor:none}
+  .c-dot{position:fixed;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--g3)}
+  .c-ring{position:fixed;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;border:1px solid rgba(240,223,176,.55);display:grid;place-items:center;transition:width .35s,height .35s,margin .35s,background .35s,border-color .35s}
+  .c-ring span{font:500 10px Montserrat;letter-spacing:.2em;text-transform:uppercase;color:#120d05;opacity:0;transition:opacity .2s}
+  .cursor.big .c-ring{width:92px;height:92px;margin:-46px 0 0 -46px;background:var(--g3);border-color:transparent}
+  .cursor.big .c-ring span{opacity:1}
+  .cursor.big .c-dot{opacity:0}
+
+  /* ===== Header ===== */
+  .hdr{position:fixed;inset:0 0 auto;z-index:100;transition:transform .5s cubic-bezier(.7,0,.2,1),background .4s,backdrop-filter .4s}
+  .hdr.scrolled{background:rgba(10,10,10,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .hdr.hide{transform:translateY(-100%)}
+  .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:88px;gap:24px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .mono{width:38px}
+  .brand-name{font:400 17px/1 var(--disp);letter-spacing:.2em;color:var(--txt);white-space:nowrap}
+  .brand-name i{font-style:normal;color:var(--g2);margin:0 .3em}
+  .brand-name small{display:block;font:500 8.5px Montserrat;letter-spacing:.62em;color:var(--mut);margin-top:6px}
+  .nav{display:flex;gap:34px;list-style:none;font:500 11px Montserrat;letter-spacing:.24em;text-transform:uppercase}
+  .nav a{position:relative;color:#cfcac1;padding:6px 0}
+  .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.7,0,.2,1)}
+  .nav a:hover::after{transform:scaleX(1);transform-origin:left}
+  .hdr .btn{padding:14px 24px}
+  .burger{display:none;width:44px;height:44px;position:relative}
+  .burger span{position:absolute;left:10px;right:10px;height:1px;background:var(--txt);transition:transform .4s,top .4s}
+  .burger span:nth-child(1){top:18px}.burger span:nth-child(2){top:25px}
+  .menu-open .burger span:nth-child(1){top:21px;transform:rotate(45deg)}
+  .menu-open .burger span:nth-child(2){top:21px;transform:rotate(-45deg)}
+  .mmenu{position:fixed;inset:0;z-index:90;background:var(--bk);display:flex;flex-direction:column;justify-content:center;padding:100px var(--pad) 40px;clip-path:inset(0 0 100% 0);transition:clip-path .8s cubic-bezier(.7,0,.2,1);visibility:hidden}
+  .menu-open .mmenu{clip-path:inset(0);visibility:visible}
+  .mmenu a{display:block;font:400 clamp(34px,9vw,56px)/1.25 var(--disp);text-transform:uppercase;color:var(--txt);border-bottom:1px solid var(--line);padding:8px 0}
+  .mmenu a:hover{color:var(--g2)}
+  .mmenu .btn{margin-top:32px;align-self:flex-start;font-size:12px;border:0;padding:18px 34px}
+
+  /* ===== Hero ===== */
+  .hero{min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:120px 0 80px}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .hero-glow{position:absolute;width:70vmax;height:70vmax;left:50%;top:50%;margin:-35vmax 0 0 -35vmax;border-radius:50%;background:radial-gradient(circle,rgba(201,164,100,.16) 0%,rgba(201,164,100,.05) 35%,transparent 65%);pointer-events:none;filter:blur(10px)}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(30px,5vw,90px);align-items:center}
+  .hero h1{font:400 clamp(44px,7.4vw,124px)/.98 var(--disp);text-transform:uppercase;letter-spacing:.005em;margin:26px 0 30px}
+  .hero h1 .gold-text{display:inline-block;padding-right:.04em}
+  .hero p{color:#b5b0a7;font-size:clamp(15px,1.3vw,18px);max-width:520px;margin-bottom:40px}
+  .actions{display:flex;flex-wrap:wrap;gap:14px}
+  .hero-art{position:relative;justify-self:end;width:min(420px,100%)}
+  .arch{position:relative;aspect-ratio:9/14;border-radius:999px 999px 18px 18px;overflow:hidden;background:#151311;box-shadow:0 40px 120px -30px rgba(201,164,100,.35)}
+  .arch video{width:100%;height:100%;object-fit:cover;transform:scale(1.28);transform-origin:50% 88%}
+  .arch::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(240,223,176,.25);background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45))}
+  .arch-frame{position:absolute;inset:-16px;border-radius:999px 999px 26px 26px;border:1px solid rgba(201,164,100,.35);pointer-events:none}
+  .badge{position:absolute;left:-58px;bottom:70px;width:132px;height:132px;display:grid;place-items:center}
+  .badge svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
+  .badge text{font:500 9.6px Montserrat;letter-spacing:.32em;fill:var(--g3);text-transform:uppercase}
+  .badge .mono{width:38px}
+  .badge::before{content:"";position:absolute;inset:14px;border-radius:50%;background:rgba(10,10,10,.82);backdrop-filter:blur(6px)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .scroll-cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;font:500 9px Montserrat;letter-spacing:.4em;color:var(--mut);text-transform:uppercase}
+  .scroll-cue i{width:1px;height:46px;background:linear-gradient(var(--g2),transparent);animation:drip 2.2s cubic-bezier(.7,0,.2,1) infinite;transform-origin:top}
+  @keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* ===== Marquee ===== */
+  .marquee{padding:34px 0;border-block:1px solid var(--line);overflow:hidden;background:var(--bk)}
+  .mq-row{display:flex;width:max-content;white-space:nowrap}
+  .mq-row+.mq-row{margin-top:6px}
+  .mq-row span{font:400 clamp(30px,4.6vw,66px)/1.15 var(--disp);text-transform:uppercase;padding-right:.6em;display:inline-flex;align-items:center;gap:.6em}
+  .mq-row span::after{content:"";width:.32em;height:.32em;transform:rotate(45deg);background:var(--gold);background-size:200% 100%}
+  .mq-row.outline span{color:transparent;-webkit-text-stroke:1px rgba(201,164,100,.6)}
+  .mq-row.solid span{color:#d9d4ca}
+
+  /* ===== Manifesto ===== */
+  .manifesto{padding:clamp(100px,16vw,220px) 0}
+  .manifesto-txt{font:400 clamp(26px,3.7vw,56px)/1.28 var(--disp);text-transform:uppercase;max-width:1200px}
+  .manifesto-txt .w{color:#2c2a27}
+  .no-motion .manifesto-txt .w,.manifesto-txt .w.on{color:var(--txt)}
+  .no-motion .manifesto-txt .w.g{color:var(--g2)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(60px,8vw,110px);border-top:1px solid var(--line)}
+  .stat{padding-top:28px}
+  .stat b{display:block;font:400 clamp(54px,7vw,110px)/1 var(--disp)}
+  .stat span{display:block;margin-top:10px;color:var(--mut);font-size:14px;max-width:240px}
+
+  /* ===== Destaque Facetas (sticky split) ===== */
+  .feat{padding:clamp(90px,12vw,170px) 0;background:var(--bk2)}
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,120px);align-items:start}
+  .feat-sticky{position:sticky;top:130px}
+  .ticks{list-style:none;margin:34px 0 42px;border-top:1px solid var(--line)}
+  .ticks li{display:flex;gap:18px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line);color:#cbc6bd}
+  .ticks li b{font:400 13px var(--disp);color:var(--g2);letter-spacing:.1em}
+  .feat-media{display:grid;gap:clamp(20px,3vw,40px)}
+  .clip{overflow:hidden;border-radius:6px;position:relative;background:#141210}
+  .clip img{width:100%;height:100%;object-fit:cover}
+  .feat-media .clip:nth-child(2){width:78%;margin-left:auto}
+  .cap{display:flex;justify-content:space-between;margin-top:12px;font:500 10px Montserrat;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
+
+  /* ===== Before / after ===== */
+  .ba{position:relative;overflow:hidden;border-radius:6px;background:#111;user-select:none;-webkit-user-select:none;--pos:50%;touch-action:pan-y}
+  .ba img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .ba .ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+  .ba .ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:var(--gold);background-size:100% 200%;pointer-events:none}
+  .ba .ba-knob{position:absolute;top:50%;left:var(--pos);width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(10,10,10,.6);backdrop-filter:blur(8px);border:1px solid var(--g2);display:grid;place-items:center;pointer-events:none}
+  .ba .ba-knob svg{width:26px;height:26px;color:var(--g3)}
+  .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;touch-action:pan-y}
+  .ba .tag{position:absolute;top:16px;padding:7px 14px;border-radius:99px;background:rgba(10,10,10,.65);backdrop-filter:blur(8px);font:500 10px Montserrat;letter-spacing:.3em;text-transform:uppercase;color:var(--txt);pointer-events:none}
+  .ba .tag.l{left:16px}.ba .tag.r{right:16px;color:var(--g3)}
+
+  /* ===== Reels ===== */
+  .reels{padding:clamp(90px,12vw,170px) 0;overflow:hidden}
+  .reels-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+  .reels-row{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.6vw,22px);margin-top:60px;perspective:1400px}
+  .reel{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#151311;transform-style:preserve-3d;box-shadow:0 30px 60px -30px #000}
+  .reel video{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .reel:hover video{transform:scale(1.06)}
+  .reel::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(240,223,176,.16);pointer-events:none}
+  .reel:nth-child(even){margin-top:60px}
+
+  /* ===== HOF ===== */
+  .hof{padding:clamp(90px,12vw,170px) 0;background:var(--light);color:var(--ink)}
+  .hof .h2{color:#151413}
+  .hof .lead{color:#5f5b55}
+  .hof-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
+  .hof-media{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden}
+  .hof-media img{width:100%;height:100%;object-fit:cover}
+  .hof-list{list-style:none;margin:30px 0 40px;display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+  .hof-list li{padding:16px 0;border-bottom:1px solid #dcd6cc;font:400 15px var(--disp);letter-spacing:.06em;text-transform:uppercase;color:#2a2825;display:flex;gap:12px;align-items:center}
+  .hof-list li::before{content:"";width:7px;height:7px;transform:rotate(45deg);background:var(--g2)}
+  .hof .btn-line{color:#3a2c14;border-color:#b8924f}
+  .hof .btn-line:hover{color:#fff}
+  .hof .btn-line::after{background:#111}
+
+  /* ===== Antes e depois ===== */
+  .results{padding:clamp(90px,12vw,170px) 0}
+  .ba-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,26px);margin-top:60px}
+  .ba-grid .ba{grid-column:span 6;aspect-ratio:4/3}
+  .ba-grid .ba.tall{grid-column:span 3;aspect-ratio:3/4}
+  .ba-grid .ba.wide{grid-column:span 6;aspect-ratio:3/2}
+  .hint{margin-top:18px;color:var(--mut);font-size:13px;display:flex;align-items:center;gap:10px}
+
+  /* ===== Casos (horizontal) ===== */
+  .cases{background:var(--bk2);overflow:hidden}
+  .cases-pin{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:110px 0 60px}
+  .cases-track{display:flex;gap:clamp(14px,2vw,28px);padding-left:max(var(--pad),calc((100vw - 1320px)/2));padding-right:var(--pad);margin-top:48px;width:max-content}
+  .case{flex:none;width:clamp(240px,26vw,380px);aspect-ratio:4/5;border-radius:6px;overflow:hidden;position:relative;background:#181614}
+  .case img{width:115%;max-width:none;height:100%;object-fit:cover;margin-left:-7.5%}
+  .case.sq{aspect-ratio:1;width:clamp(260px,32vw,470px)}
+  .case span{position:absolute;left:16px;bottom:14px;font:400 12px var(--disp);letter-spacing:.3em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+  .progress{height:1px;background:var(--line);margin-top:40px;position:relative}
+  .progress i{position:absolute;inset:0;background:var(--gold);transform-origin:left;transform:scaleX(0)}
+
+  /* ===== Tratamentos ===== */
+  .treat{padding:clamp(90px,12vw,170px) 0}
+  .t-list{margin-top:60px;border-top:1px solid var(--line)}
+  .t-row{position:relative;display:grid;grid-template-columns:70px 1fr auto;gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);overflow:hidden}
+  .t-row::before{content:"";position:absolute;inset:0;background:var(--gold);background-size:200% 100%;transform:scaleY(0);transform-origin:bottom;transition:transform .6s cubic-bezier(.7,0,.2,1);z-index:0}
+  .t-row>*{position:relative;z-index:1;transition:color .45s,transform .6s cubic-bezier(.7,0,.2,1)}
+  .t-row .n{font:400 13px var(--disp);color:var(--g2);letter-spacing:.12em}
+  .t-row h3{font:400 clamp(24px,3.6vw,52px)/1.08 var(--disp);text-transform:uppercase;color:var(--txt)}
+  .t-row h3 em{font-style:normal;display:inline-block;vertical-align:middle;margin-left:16px;padding:5px 12px;border:1px solid var(--g2);border-radius:99px;font:500 9px Montserrat;letter-spacing:.28em;color:var(--g3)}
+  .t-row p{font-size:14px;color:var(--mut);max-width:330px;text-align:right}
+  .t-row:hover::before{transform:scaleY(1)}
+  .t-row:hover>*{color:#120d05}
+  .t-row:hover h3{transform:translateX(18px)}
+  .t-row:hover h3 em{border-color:#120d05;color:#120d05}
+  .t-float{position:fixed;left:0;top:0;width:300px;aspect-ratio:4/5;margin:-200px 0 0 -150px;border-radius:8px;overflow:hidden;pointer-events:none;z-index:50;opacity:0;transform:scale(.6);transition:opacity .35s,transform .45s cubic-bezier(.2,.7,.2,1);background:#111 center/cover no-repeat;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .t-float.on{opacity:1;transform:scale(1)}
+
+  /* ===== Equipe ===== */
+  .team{padding:clamp(90px,12vw,170px) 0;background:var(--light);color:var(--ink)}
+  .team .h2{color:#151413}
+  .team .lead{color:#5f5b55}
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px);margin-top:60px}
+  .pro{perspective:1000px}
+  .pro-card{position:relative;transform-style:preserve-3d;transition:transform .2s}
+  .pro .clip{aspect-ratio:3/4;border-radius:6px;background:#d9d3c8}
+  .pro .clip img{filter:grayscale(1) contrast(1.05);transition:filter .8s,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .pro:hover .clip img{filter:none;transform:scale(1.04)}
+  .pro-shine{position:absolute;inset:0;border-radius:6px;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,240,200,.35),transparent 45%);opacity:0;transition:opacity .4s;mix-blend-mode:soft-light}
+  .pro:hover .pro-shine{opacity:1}
+  .pro h3{font:400 clamp(20px,2vw,26px)/1.2 var(--disp);text-transform:uppercase;margin-top:22px;color:#141312;letter-spacing:.04em}
+  .pro p{font-size:13px;color:#6d6861;letter-spacing:.08em;margin-top:6px}
+  .pro .bar{height:1px;background:#d2cbbf;margin-top:16px;position:relative;overflow:hidden}
+  .pro .bar::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.7,0,.2,1)}
+  .pro:hover .bar::after{transform:scaleX(1)}
+
+  /* ===== Clínica (cartas empilhadas) ===== */
+  .space{padding:clamp(90px,12vw,170px) 0 clamp(60px,8vw,120px)}
+  .stack{margin-top:60px}
+  .stack-card{position:sticky;top:12vh;height:76vh;border-radius:10px;overflow:hidden;margin-bottom:6vh;transform-origin:top center;background:#141210}
+  .stack-card img{width:100%;height:100%;object-fit:cover}
+  .stack-card figcaption{position:absolute;left:28px;bottom:24px;font:400 clamp(18px,2vw,26px) var(--disp);letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+  .stack-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.55));pointer-events:none}
+  .stack-card figcaption{z-index:2}
+
+  /* ===== CTA ===== */
+  .cta{padding:clamp(100px,14vw,200px) 0;text-align:center;color:#120d05;overflow:hidden}
+  .cta .gold-bg{position:absolute;inset:0;z-index:-1}
+  .cta{isolation:isolate}
+  .cta h2{font:400 clamp(40px,8vw,132px)/.98 var(--disp);text-transform:uppercase;margin:20px 0 26px}
+  .cta p{max-width:560px;margin:0 auto 44px;font-size:17px;color:#2e2412}
+  .cta .eyebrow{color:#3a2c14}
+  .cta .eyebrow::before{background:#3a2c14}
+  .cta .mono{width:64px;margin:0 auto;background:#120d05}
+
+  /* ===== Contato ===== */
+  .contact{padding:clamp(90px,12vw,160px) 0}
+  .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:stretch}
+  .info{list-style:none;margin:36px 0 40px;border-top:1px solid var(--line)}
+  .info li{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+  .info small{font:500 10px Montserrat;letter-spacing:.32em;text-transform:uppercase;color:var(--g2);padding-top:5px}
+  .info a:hover{color:var(--g3)}
+  .map{min-height:420px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#121110;display:grid}
+  .map iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(1) invert(.92) contrast(.9) brightness(.9)}
+  .map-cta{display:grid;place-items:center;text-align:center;padding:40px;gap:20px}
+  .map-cta .mono{width:90px}
+  .map-cta p{color:var(--mut);max-width:320px}
+
+  footer{border-top:1px solid var(--line);padding:70px 0 110px;overflow:hidden}
+  .f-word{font:400 clamp(46px,11.2vw,190px)/.9 var(--disp);text-transform:uppercase;white-space:nowrap;text-align:center;letter-spacing:.01em}
+  .f-word-wrap{overflow:hidden}
+  .f-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:50px;font-size:12px;color:var(--mut);letter-spacing:.06em}
+  .f-bottom a:hover{color:var(--g3)}
+
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:80;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .3s}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px;color:#fff}
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ping 2.4s cubic-bezier(.2,.7,.2,1) infinite}
+  @keyframes ping{to{transform:scale(1.7);opacity:0}}
+
+  /* estado inicial das animações (só com JS + movimento permitido) */
+  .motion [data-reveal]{opacity:0;transform:translateY(50px)}
+  .motion .hero [data-in]{opacity:0}
+
+  @media (max-width:1024px){
+    .nav,.hdr .btn{display:none}
+    .burger{display:block}
+    .hero-grid,.feat-grid,.hof-grid,.c-grid{grid-template-columns:1fr}
+    .hero-art{justify-self:center;width:min(340px,86%)}
+    .badge{left:-34px;width:110px;height:110px}
+    .feat-sticky{position:static}
+    .reels-row{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:46%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-right:calc(var(--pad)*-1)}
+    .reel{scroll-snap-align:start}
+    .reel:nth-child(even){margin-top:0}
+    .ba-grid .ba,.ba-grid .ba.wide{grid-column:span 12}
+    .ba-grid .ba.tall{grid-column:span 6}
+    .cases-track{overflow-x:auto;width:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+    .case{scroll-snap-align:start}
+    .progress{display:none}
+    .t-row{grid-template-columns:44px 1fr}
+    .t-row p{grid-column:2;text-align:left}
+    .team-grid{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:1fr 1fr 1fr}
+  }
+  @media (max-width:640px){
+    .brand-name{font-size:14px}
+    .reels-row{grid-auto-columns:70%}
+    .team-grid{grid-template-columns:1fr}
+    .hof-list{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr;gap:0}
+    .info li{grid-template-columns:1fr;gap:4px}
+    .stack-card{height:62vh;top:14vh}
+    .actions .btn{width:100%;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-mono"><div class="mono base"></div><div class="mono fill gold-bg"></div></div>
+    <div class="loader-name">ALVES • PEZENTI</div>
+  </div>
+  <div class="loader-count">0</div>
+</div>
+
+<div class="cursor" aria-hidden="true"><div class="c-ring"><span></span></div><div class="c-dot"></div></div>
+<div class="t-float" aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Alves Pezenti Odontologia — início">
+      <span class="mono gold-bg"></span>
+      <span class="brand-name">ALVES<i>•</i>PEZENTI<small>ODONTOLOGIA</small></span>
+    </a>
+    <ul class="nav">
+      <li><a href="#facetas">Facetas</a></li>
+      <li><a href="#hof">HOF</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#tratamentos">Tratamentos</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="btn btn-gold magnetic" data-wa href="#contato">Agendar</a>
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mmenu" aria-label="Menu">
+  <a href="#facetas">Facetas</a>
+  <a href="#hof">Harmonização</a>
+  <a href="#resultados">Resultados</a>
+  <a href="#tratamentos">Tratamentos</a>
+  <a href="#equipe">Equipe</a>
+  <a href="#contato">Contato</a>
+  <a class="btn btn-gold" data-wa href="#contato">Agendar avaliação</a>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="dust"></canvas>
+    <div class="hero-glow"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-in>Odontologia estética &amp; harmonização</span>
+        <h1>
+          <span class="line-mask"><span class="split">A arte de</span></span>
+          <span class="line-mask"><span class="split">revelar</span></span>
+          <span class="line-mask"><span class="gold-line"><span class="gold-text">sorrisos</span></span></span>
+        </h1>
+        <p data-in>Facetas, lentes de contato dental e harmonização orofacial desenhadas com precisão para um resultado natural, elegante e só seu.</p>
+        <div class="actions" data-in>
+          <a class="btn btn-gold magnetic" data-wa href="#contato"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>Agendar avaliação</a>
+          <a class="btn btn-line magnetic" href="#resultados">Ver resultados</a>
+        </div>
+      </div>
+      <div class="hero-art" data-in>
+        <div class="arch-frame"></div>
+        <div class="arch"><video src="video/sorriso-1.mp4" poster="img/sorriso-1-poster.jpg" muted loop playsinline autoplay preload="auto" aria-label="Sorriso com lentes de contato dental"></video></div>
+        <div class="badge">
+          <svg viewBox="0 0 132 132" aria-hidden="true"><defs><path id="circ" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#circ">Alves Pezenti • Odontologia • Sorrisos •</textPath></text></svg>
+          <span class="mono gold-bg" style="position:relative"></span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">Role<i></i></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="mq-row outline" id="mq1"></div>
+    <div class="mq-row solid" id="mq2"></div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto">
+    <div class="wrap">
+      <span class="eyebrow" data-reveal>Nossa filosofia</span>
+      <p class="manifesto-txt" id="manifesto" style="margin-top:34px">Cada sorriso é desenhado sob medida, com precisão milimétrica e o olhar de quem entende que estética de verdade é aquela que <span class="g">parece sua.</span> Técnica, arte e cuidado em cada detalhe.</p>
+      <div class="stats">
+        <div class="stat" data-reveal><b class="gold-text" data-count="14">0</b><span>especialidades para cuidar do seu sorriso por completo</span></div>
+        <div class="stat" data-reveal><b class="gold-text" data-count="3">0</b><span>profissionais dedicados a um resultado natural</span></div>
+        <div class="stat" data-reveal><b class="gold-text" data-count="1">0</b><span>propósito: revelar o sorriso que já é seu</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACETAS -->
+  <section class="feat" id="facetas">
+    <div class="wrap feat-grid">
+      <div class="feat-sticky">
+        <span class="eyebrow" data-reveal>Destaque · Facetas &amp; lentes</span>
+        <h2 class="h2 split-lines">Um sorriso <span class="gold-text">desenhado</span> para o seu rosto</h2>
+        <p class="lead" data-reveal>Lâminas ultrafinas em porcelana ou resina que corrigem cor, formato, tamanho e alinhamento. Tudo começa com um planejamento digital, para você enxergar o resultado antes de começar.</p>
+        <ul class="ticks" data-reveal>
+          <li><b>01</b>Lentes em porcelana: durabilidade e brilho natural</li>
+          <li><b>02</b>Lentes em resina: transformação rápida e acessível</li>
+          <li><b>03</b>Planejamento digital do sorriso, sem aspecto artificial</li>
+        </ul>
+        <a class="btn btn-gold magnetic" data-reveal data-wa data-msg="Olá! Gostaria de agendar uma avaliação para facetas/lentes de contato dental." href="#contato">Quero minhas lentes</a>
+      </div>
+      <div class="feat-media">
+        <div><div class="clip" data-clip style="aspect-ratio:1"><img src="img/caso-12.webp" alt="Paciente sorrindo após lentes de contato dental" loading="lazy"></div><div class="cap"><span>Resultado</span><span>Lentes de contato dental</span></div></div>
+        <div><div class="ba" data-cursor="Arraste" style="aspect-ratio:4/3"><img src="img/ba1-depois.webp" alt="Depois" loading="lazy"><div class="ba-before"><img src="img/ba1-antes.webp" alt="Antes" loading="lazy"></div><span class="tag l">Antes</span><span class="tag r">Depois</span><div class="ba-line"></div><div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois"></div><div class="cap"><span>Arraste para comparar</span><span>Antes · Depois</span></div></div>
+        <div><div class="clip" data-clip style="aspect-ratio:1"><img src="img/caso-11.webp" alt="Paciente sorrindo e detalhe das lentes" loading="lazy"></div><div class="cap"><span>Resultado</span><span>Estética dental</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REELS -->
+  <section class="reels">
+    <div class="wrap">
+      <div class="reels-head">
+        <div>
+          <span class="eyebrow" data-reveal>Em movimento</span>
+          <h2 class="h2 split-lines">Sorrisos que <span class="gold-text">ganham vida</span></h2>
+        </div>
+        <p class="lead" data-reveal>Naturalidade se percebe em movimento: luz, forma e proporção em harmonia com cada rosto.</p>
+      </div>
+      <div class="reels-row" id="reels"></div>
+    </div>
+  </section>
+
+  <!-- HOF -->
+  <section class="hof" id="hof">
+    <div class="wrap hof-grid">
+      <div class="hof-media" id="hofMedia"><img src="img/clinica-hof.webp" alt="Sala de harmonização orofacial da clínica" loading="lazy"></div>
+      <div>
+        <span class="eyebrow" data-reveal>Destaque · Harmonização orofacial</span>
+        <h2 class="h2 split-lines">Equilíbrio e <span class="gold-text">leveza</span> para o seu rosto</h2>
+        <p class="lead" data-reveal>Procedimentos minimamente invasivos que realçam seus traços e equilibram sorriso e face, sempre respeitando a sua identidade.</p>
+        <ul class="hof-list" data-reveal>
+          <li>Preenchimento labial</li>
+          <li>Toxina botulínica</li>
+          <li>Bioestimuladores</li>
+          <li>Contorno facial</li>
+        </ul>
+        <a class="btn btn-line magnetic" data-reveal data-wa data-msg="Olá! Gostaria de agendar uma avaliação de harmonização orofacial." href="#contato">Agendar avaliação HOF</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANTES E DEPOIS -->
+  <section class="results" id="resultados">
+    <div class="wrap">
+      <span class="eyebrow" data-reveal>Resultados reais</span>
+      <h2 class="h2 split-lines">Antes <span class="gold-text">&amp;</span> depois</h2>
+      <p class="lead" data-reveal>Arraste a linha dourada e veja a transformação de pacientes da clínica.</p>
+      <div class="ba-grid" id="baGrid"></div>
+    </div>
+  </section>
+
+  <!-- CASOS -->
+  <section class="cases" id="casos">
+    <div class="cases-pin">
+      <div class="wrap">
+        <span class="eyebrow">Galeria de casos</span>
+        <h2 class="h2" style="margin-bottom:0">Assinatura <span class="gold-text">Alves Pezenti</span></h2>
+      </div>
+      <div class="cases-track" id="casesTrack"></div>
+      <div class="wrap"><div class="progress"><i id="casesBar"></i></div></div>
+    </div>
+  </section>
+
+  <!-- TRATAMENTOS -->
+  <section class="treat" id="tratamentos">
+    <div class="wrap">
+      <span class="eyebrow" data-reveal>Tratamentos</span>
+      <h2 class="h2 split-lines">Cuidado <span class="gold-text">completo</span>, do básico ao extraordinário</h2>
+      <div class="t-list" id="tList"></div>
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section class="team" id="equipe">
+    <div class="wrap">
+      <span class="eyebrow" data-reveal>Quem cuida de você</span>
+      <h2 class="h2 split-lines">Nossa <span class="gold-text">equipe</span></h2>
+      <div class="team-grid" id="teamGrid"></div>
+    </div>
+  </section>
+
+  <!-- CLÍNICA -->
+  <section class="space" id="clinica">
+    <div class="wrap">
+      <span class="eyebrow" data-reveal>Nosso espaço</span>
+      <h2 class="h2 split-lines">Pensado para o seu <span class="gold-text">conforto</span></h2>
+      <p class="lead" data-reveal>Um ambiente acolhedor, elegante e equipado para que cada visita seja leve, do café da recepção à cadeira do consultório.</p>
+      <div class="stack" id="stack"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="gold-bg"></div>
+    <div class="wrap">
+      <div class="mono" data-reveal></div>
+      <h2 class="split-lines" style="margin-top:28px">Seu novo sorriso<br>começa aqui</h2>
+      <p data-reveal>Fale com a nossa equipe pelo WhatsApp e agende a sua avaliação.</p>
+      <a class="btn btn-dark magnetic" data-reveal data-wa href="#contato"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>(11) 98879-9334</a>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact" id="contato">
+    <div class="wrap c-grid">
+      <div>
+        <span class="eyebrow" data-reveal>Contato</span>
+        <h2 class="h2 split-lines">Venha nos <span class="gold-text">visitar</span></h2>
+        <ul class="info" data-reveal id="info"></ul>
+        <a class="btn btn-gold magnetic" data-reveal data-wa href="#contato"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>Agendar pelo WhatsApp</a>
+      </div>
+      <div class="map" data-reveal id="map"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="f-word-wrap"><div class="f-word gold-text" id="fWord">ALVES • PEZENTI</div></div>
+  <div class="wrap f-bottom">
+    <span>© <span id="ano"></span> Alves Pezenti Odontologia<span id="rt"></span></span>
+    <a href="#top">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa href="#contato" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></symbol>
+</svg>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* ================= Dados editáveis ================= */
+const WHATSAPP = '5511988799334';
+const MSG = 'Olá! Vim pelo site e gostaria de agendar uma avaliação.';
+const ENDERECO = '';            // ex.: 'Rua Tal, 123 - Bairro, São Paulo - SP' (aparece no Contato + mapa)
+const HORARIO = '';             // ex.: 'Seg a sex, 9h às 19h · Sáb, 9h às 13h'
+const INSTAGRAM = '';           // ex.: 'alvespezenti' (sem @)
+const RESPONSAVEL_TECNICO = ''; // ex.: 'Dr. Fulano — CRO-SP 00000' (exigido pelo CFO em publicidade)
+const EQUIPE = [ // cargo/CRO aparecem só quando preenchidos
+  {nome:'Bruno Henrique Alves', cargo:'', foto:'equipe-bruno'},
+  {nome:'Isabela Pezenti',      cargo:'', foto:'equipe-isabela'},
+  {nome:'Nathália Pezenti',     cargo:'', foto:'equipe-nathalia'},
+];
+const TRATAMENTOS = [ // [nome, descrição, imagem, destaque]
+  ['Lentes em Porcelana','Lâminas ultrafinas, duráveis e com brilho natural.','caso-12',1],
+  ['Lentes em Resina','Transformação estética rápida e acessível.','caso-06',1],
+  ['Harmonização Orofacial','Equilíbrio facial com procedimentos minimamente invasivos.','clinica-hof',1],
+  ['Estética Dental','Cor, forma e proporção em harmonia com o seu rosto.','caso-11'],
+  ['Clareamento Dental','Dentes mais brancos com segurança e acompanhamento.','ba1-depois'],
+  ['Dentística','Restaurações estéticas que devolvem forma e função.','caso-05'],
+  ['Clínica Geral','Prevenção, limpeza e check-ups regulares.','clinica-sala2'],
+  ['Ortodontia','Alinhamento dos dentes com aparelhos e alinhadores.','clinica-sala'],
+  ['Endodontia','Tratamento de canal com conforto e precisão.','clinica-cadeira'],
+  ['Periodontia','Saúde da gengiva e dos tecidos de suporte.','clinica-sala2'],
+  ['Implantodontia','Reposição de dentes com implantes.','clinica-corredor'],
+  ['Prótese Dentária','Reabilitação estética e funcional do sorriso.','caso-10'],
+  ['Cirurgia Oral','Extrações, sisos e pequenas cirurgias.','clinica-cadeira'],
+  ['Odontopediatria','Atendimento acolhedor para os pequenos.','clinica-recepcao'],
+];
+const ANTES_DEPOIS = [ // fotos de pacientes da clínica (antes / depois)
+  ['ba2','wide'],['ba3','wide'],['ba5','tall'],['ba6','tall'],['ba4','wide'],
+];
+const CASOS = ['caso-11','caso-01','caso-02','caso-03','caso-12','caso-04','caso-05','caso-06','caso-07','caso-08','caso-09','caso-13','caso-10','caso-14'];
+const CLINICA = [['clinica-recepcao','Recepção'],['clinica-sala','Consultório'],['clinica-recepcao2','Sala de espera'],['clinica-sala2','Atendimento'],['clinica-corredor','Ambientes']];
+const MARQUEE = ['Facetas','Lentes em porcelana','Harmonização orofacial','Clareamento','Estética dental','Lentes em resina'];
+/* =================================================== */
+
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const wa = m => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m||MSG)}`;
+const knob = '<div class="ba-line"></div><div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div>';
+
+// --- conteúdo gerado ---
+['mq1','mq2'].forEach((id,k)=>{const items=(k?[...MARQUEE].reverse():MARQUEE).map(t=>`<span>${t}</span>`).join('');$('#'+id).innerHTML=items+items});
+$('#reels').innerHTML=[1,2,3,4,5].map(n=>`<div class="reel" data-cursor="Play"><video src="video/sorriso-${n}.mp4" poster="img/sorriso-${n}-poster.jpg" muted loop playsinline preload="none" aria-label="Vídeo de sorriso ${n}"></video></div>`).join('');
+$('#baGrid').innerHTML=ANTES_DEPOIS.map(([b,c],i)=>`<div class="ba ${c}" data-cursor="Arraste" data-reveal><img src="img/${b}-depois.webp" alt="Depois" loading="lazy"><div class="ba-before"><img src="img/${b}-antes.webp" alt="Antes" loading="lazy"></div><span class="tag l">Antes</span><span class="tag r">Depois</span>${knob}<input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso ${i+1}"></div>`).join('');
+$('#casesTrack').innerHTML=CASOS.map((c,i)=>`<figure class="case${/caso-1[12]/.test(c)?' sq':''}" data-cursor="Ver"><img src="img/${c}.webp" alt="Caso clínico ${i+1}" loading="lazy"><span>${String(i+1).padStart(2,'0')}</span></figure>`).join('');
+$('#tList').innerHTML=TRATAMENTOS.map(([t,d,img,s],i)=>`<a class="t-row" data-img="img/${img}.webp" href="${wa('Olá! Gostaria de saber mais sobre '+t+'.')}" target="_blank" rel="noopener"><span class="n">${String(i+1).padStart(2,'0')}</span><h3>${t}${s?'<em>Destaque</em>':''}</h3><p>${d}</p></a>`).join('');
+$('#teamGrid').innerHTML=EQUIPE.map(p=>`<article class="pro" data-reveal><div class="pro-card"><div class="clip"><img src="img/${p.foto}.webp" alt="${p.nome}" loading="lazy"></div><div class="pro-shine"></div></div><h3>${p.nome}</h3>${p.cargo?`<p>${p.cargo}</p>`:'<p>Alves Pezenti Odontologia</p>'}<div class="bar"></div></article>`).join('');
+$('#stack').innerHTML=CLINICA.map(([f,t])=>`<figure class="stack-card"><img src="img/${f}.webp" alt="${t} da clínica Alves Pezenti" loading="lazy"><figcaption>${t}</figcaption></figure>`).join('');
+const info=[];
+if(ENDERECO) info.push(['Endereço',ENDERECO]);
+info.push(['WhatsApp',`<a data-wa href="#contato">(11) 98879-9334</a>`]);
+if(HORARIO) info.push(['Horário',HORARIO.split(' · ').join('<br>')]);
+if(INSTAGRAM) info.push(['Instagram',`<a href="https://instagram.com/${INSTAGRAM}" target="_blank" rel="noopener">@${INSTAGRAM}</a>`]);
+$('#info').innerHTML=info.map(([k,v])=>`<li><small>${k}</small><span>${v}</span></li>`).join('');
+$('#map').innerHTML = ENDERECO
+  ? `<iframe title="Mapa da clínica" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?output=embed&q=${encodeURIComponent(ENDERECO)}"></iframe>`
+  : `<div class="map-cta"><div class="mono gold-bg"></div><p>Agende pelo WhatsApp e receba a localização e os horários disponíveis.</p><a class="btn btn-line" data-wa href="#contato">Falar com a clínica</a></div>`;
+$('#ano').textContent=new Date().getFullYear();
+if(RESPONSAVEL_TECNICO) $('#rt').textContent=' · Responsável técnico: '+RESPONSAVEL_TECNICO;
+$$('[data-wa]').forEach(a=>{a.href=wa(a.dataset.msg);a.target='_blank';a.rel='noopener'});
+
+// --- antes/depois (funciona sem animação) ---
+$$('.ba').forEach(b=>{const r=$('input',b);r.addEventListener('input',()=>b.style.setProperty('--pos',r.value+'%'))});
+
+// --- vídeos tocam só quando visíveis ---
+const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(v.preload==='none')v.preload='auto';v.play().catch(()=>{})}else v.pause()}),{threshold:.25});
+$$('video').forEach(v=>vio.observe(v));
+
+// --- menu mobile ---
+const burger=$('.burger');
+const closeMenu=()=>{document.body.classList.remove('menu-open');burger.setAttribute('aria-expanded',false)};
+burger.onclick=()=>burger.setAttribute('aria-expanded',document.body.classList.toggle('menu-open'));
+$$('.mmenu a').forEach(a=>a.addEventListener('click',closeMenu));
+
+/* ================= Movimento ================= */
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap || !window.Lenis || !window.SplitText;
+if (reduced) { // sem animação (ou CDN fora do ar): mostra tudo parado
+  document.documentElement.classList.remove('motion');
+  document.documentElement.classList.add('no-motion');
+} else {
+  document.documentElement.classList.add('motion');
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  const lenis = window.lenis = new Lenis({lerp:.09, smoothWheel:true});
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.stop();
+  $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length<2&&id!=='#')return;e.preventDefault();lenis.scrollTo(id==='#top'||id==='#'?0:id,{offset:-70,duration:1.6})}));
+
+  // cursor
+  if (matchMedia('(pointer:fine)').matches) {
+    document.documentElement.classList.add('has-cursor');
+    const cur=$('.cursor'), dx=gsap.quickTo('.c-dot','x',{duration:.08}), dy=gsap.quickTo('.c-dot','y',{duration:.08}),
+          rx=gsap.quickTo('.c-ring','x',{duration:.45,ease:'power3'}), ry=gsap.quickTo('.c-ring','y',{duration:.45,ease:'power3'});
+    addEventListener('pointermove',e=>{dx(e.clientX);dy(e.clientY);rx(e.clientX);ry(e.clientY)});
+    $$('[data-cursor]').forEach(el=>{el.addEventListener('pointerenter',()=>{$('.c-ring span').textContent=el.dataset.cursor;cur.classList.add('big')});el.addEventListener('pointerleave',()=>cur.classList.remove('big'))});
+    // magnéticos
+    $$('.magnetic').forEach(el=>{const xt=gsap.quickTo(el,'x',{duration:.6,ease:'elastic.out(1,.4)'}),yt=gsap.quickTo(el,'y',{duration:.6,ease:'elastic.out(1,.4)'});
+      el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();xt((e.clientX-r.left-r.width/2)*.35);yt((e.clientY-r.top-r.height/2)*.45)});
+      el.addEventListener('pointerleave',()=>{xt(0);yt(0)})});
+    // imagem flutuante dos tratamentos
+    const fl=$('.t-float'), fx=gsap.quickTo(fl,'x',{duration:.6,ease:'power3'}), fy=gsap.quickTo(fl,'y',{duration:.6,ease:'power3'});
+    $$('.t-row').forEach(r=>{r.addEventListener('pointerenter',()=>{fl.style.backgroundImage=`url(${r.dataset.img})`;fl.classList.add('on')});r.addEventListener('pointerleave',()=>fl.classList.remove('on'))});
+    addEventListener('pointermove',e=>{fx(e.clientX);fy(e.clientY)});
+    // tilt 3D na equipe
+    $$('.pro').forEach(p=>{const c=$('.pro-card',p);p.addEventListener('pointermove',e=>{const r=p.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      gsap.to(c,{rotateY:(x-.5)*14,rotateX:(.5-y)*14,duration:.5,ease:'power2'});c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%')});
+      p.addEventListener('pointerleave',()=>gsap.to(c,{rotateX:0,rotateY:0,duration:.8,ease:'elastic.out(1,.5)'}))});
+  }
+
+  // header some ao descer, volta ao subir
+  const hdr=$('.hdr');
+  ScrollTrigger.create({start:0,end:'max',onUpdate:s=>{hdr.classList.toggle('scrolled',s.scroll()>40);hdr.classList.toggle('hide',s.direction===1&&s.scroll()>400&&!document.body.classList.contains('menu-open'))}});
+
+  // poeira dourada no hero
+  (()=>{const cv=$('#dust'),ctx=cv.getContext('2d');let w,h,ps=[],mx=-999,my=-999,on=true;const dpr=Math.min(devicePixelRatio,2);
+    const size=()=>{w=cv.clientWidth;h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const n=Math.round(Math.min(110,w*h/14000));ps=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.6+.3,v:Math.random()*.35+.08,a:Math.random()*.6+.2,t:Math.random()*6.28}))};
+    size();addEventListener('resize',size);
+    cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+    ScrollTrigger.create({trigger:'.hero',start:'top top',end:'bottom top',onToggle:s=>on=s.isActive});
+    gsap.ticker.add(()=>{if(!on)return;ctx.clearRect(0,0,w,h);for(const p of ps){p.y-=p.v;p.t+=.02;p.x+=Math.sin(p.t)*.25;const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<120){p.x+=dx/d*1.6;p.y+=dy/d*1.6}if(p.y<-5){p.y=h+5;p.x=Math.random()*w}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fillStyle=`rgba(232,205,150,${p.a*(.6+.4*Math.sin(p.t*2))})`;ctx.fill()}});
+    const g=$('.hero-glow');$('.hero').addEventListener('pointermove',e=>gsap.to(g,{x:(e.clientX-innerWidth/2)*.25,y:(e.clientY-innerHeight/2)*.25,duration:1.6,ease:'power3'}));
+  })();
+
+  document.fonts.ready.then(()=>{
+    // títulos: linhas sobem por trás de uma máscara
+    const heroChars = new SplitText('.hero .split',{type:'chars'}).chars;
+    $$('.split-lines').forEach(h=>{const s=new SplitText(h,{type:'lines',linesClass:'line-mask'});s.lines.forEach(l=>{l.innerHTML=`<span>${l.innerHTML}</span>`});
+      gsap.from($$('.line-mask>span',h),{yPercent:115,rotate:2,duration:1.2,ease:'expo.out',stagger:.09,scrollTrigger:{trigger:h,start:'top 85%'}})});
+
+    // loader
+    gsap.set(heroChars,{yPercent:115});gsap.set('.gold-line',{yPercent:115});
+    const count={v:0}, tl=gsap.timeline();
+    tl.to(count,{v:100,duration:1.9,ease:'power2.inOut',onUpdate:()=>{$('.loader-count').textContent=Math.round(count.v);$('.loader-mono .fill').style.clipPath=`inset(${100-count.v}% 0 0 0)`}})
+      .to('.loader-inner',{scale:.9,opacity:0,duration:.6,ease:'power3.in'},'+=.15')
+      .to('.loader',{clipPath:'inset(0 0 100% 0)',duration:1.1,ease:'expo.inOut'},'-=.2')
+      .add(()=>{$('.loader').remove();lenis.start()})
+      .to(heroChars,{yPercent:0,duration:1.2,ease:'expo.out',stagger:.025},'-=.55')
+      .to('.gold-line',{yPercent:0,duration:1.3,ease:'expo.out'},'-=1')
+      .fromTo('.hero [data-in]',{opacity:0,y:40},{opacity:1,y:0,duration:1.1,ease:'power3.out',stagger:.12},'-=1.1')
+      .fromTo('.arch',{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.6,ease:'expo.inOut',clearProps:'clipPath'},'-=1.4')
+      .from('.arch video',{scale:1.4,duration:2,ease:'expo.out'},'-=1.3')
+      .from('.arch-frame',{scale:.85,opacity:0,duration:1.4,ease:'expo.out'},'-=1.6');
+
+    // hero em parallax ao rolar
+    gsap.to('.hero-copy',{yPercent:-18,opacity:.15,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.to('.hero-art',{y:-90,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+    // marquee com velocidade que reage à rolagem
+    const m1=gsap.to('#mq1',{xPercent:-50,duration:38,ease:'none',repeat:-1}), m2=gsap.fromTo('#mq2',{xPercent:-50},{xPercent:0,duration:44,ease:'none',repeat:-1});
+    ScrollTrigger.create({onUpdate:s=>{const v=gsap.utils.clamp(-4,4,s.getVelocity()/400);gsap.to([m1,m2],{timeScale:1+Math.abs(v)*2.2,duration:.2,overwrite:true});gsap.to('.mq-row',{skewX:-v*1.6,duration:.4,overwrite:'auto'});gsap.to([m1,m2],{timeScale:1,duration:1.2,delay:.2})}});
+
+    // manifesto: palavras acendem conforme rola
+    const mf=$('#manifesto'), mw=new SplitText(mf,{type:'words',wordsClass:'w'}).words;
+    mw.forEach(w=>{if(w.closest('.g'))w.classList.add('g')});
+    gsap.to(mw,{color:i=>mw[i].classList.contains('g')?'#c9a464':'#ebe7df',stagger:.1,ease:'none',scrollTrigger:{trigger:mf,start:'top 78%',end:'bottom 45%',scrub:true}});
+
+    // contadores
+    $$('[data-count]').forEach(el=>{const o={v:0};gsap.to(o,{v:+el.dataset.count,duration:2,ease:'power3.out',onUpdate:()=>el.textContent=Math.round(o.v),scrollTrigger:{trigger:el,start:'top 85%'}})});
+
+    // revelações genéricas
+    ScrollTrigger.batch('[data-reveal]',{start:'top 88%',onEnter:b=>gsap.to(b,{opacity:1,y:0,duration:1.2,ease:'expo.out',stagger:.1,overwrite:true})});
+
+    // imagens com cortina
+    $$('[data-clip]').forEach(c=>{gsap.fromTo(c,{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:1.5,ease:'expo.inOut',scrollTrigger:{trigger:c,start:'top 85%'}});
+      gsap.fromTo($('img',c),{scale:1.35},{scale:1,duration:2,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 85%'}});
+      gsap.to($('img',c),{yPercent:8,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'bottom top',scrub:true}})});
+
+    // antes/depois: a linha "respira" quando aparece, mostrando que dá pra arrastar
+    $$('.ba').forEach(b=>{const r=$('input',b),o={p:50};gsap.timeline({scrollTrigger:{trigger:b,start:'top 75%'},onUpdate:()=>{b.style.setProperty('--pos',o.p+'%');r.value=o.p}})
+      .to(o,{p:22,duration:.9,ease:'power2.inOut'}).to(o,{p:78,duration:1.1,ease:'power2.inOut'}).to(o,{p:50,duration:.8,ease:'power2.inOut'})});
+
+    // reels entram em 3D
+    gsap.from('.reel',{rotateX:28,y:140,opacity:0,duration:1.6,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'#reels',start:'top 85%'}});
+
+    // HOF: imagem se abre em círculo
+    gsap.fromTo('#hofMedia',{clipPath:'circle(12% at 50% 50%)'},{clipPath:'circle(75% at 50% 50%)',ease:'none',scrollTrigger:{trigger:'#hofMedia',start:'top 90%',end:'center 50%',scrub:true}});
+    gsap.fromTo('#hofMedia img',{scale:1.4},{scale:1,ease:'none',scrollTrigger:{trigger:'#hofMedia',start:'top 90%',end:'bottom 30%',scrub:true}});
+
+    const mm=gsap.matchMedia();
+    mm.add('(min-width:1025px)',()=>{
+      // galeria horizontal presa
+      const track=$('#casesTrack'), dist=()=>track.scrollWidth-innerWidth;
+      gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#casos',start:'top top',end:()=>'+='+dist(),pin:'.cases-pin',scrub:1,invalidateOnRefresh:true,onUpdate:s=>gsap.set('#casesBar',{scaleX:s.progress})}});
+      $$('.case img').forEach(img=>gsap.fromTo(img,{xPercent:-6},{xPercent:6,ease:'none',scrollTrigger:{trigger:'#casos',start:'top top',end:()=>'+='+dist(),scrub:true}}));
+    });
+
+    // clínica: cartas empilhadas que recuam
+    const cards=$$('.stack-card');
+    cards.forEach((c,i)=>{if(i===cards.length-1)return;gsap.to(c,{scale:.88,filter:'brightness(.45)',ease:'none',scrollTrigger:{trigger:cards[i+1],start:'top bottom',end:'top 12%',scrub:true}})});
+    cards.forEach(c=>gsap.fromTo($('img',c),{scale:1.25},{scale:1,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'top 12%',scrub:true}}));
+
+    // assinatura do rodapé
+    gsap.from('#fWord',{yPercent:100,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'footer',start:'top 92%'}});
+
+    ScrollTrigger.refresh();
+  });
+}
+</script>
+</body>
+</html>
