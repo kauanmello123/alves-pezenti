@@ -120,7 +120,8 @@
   .actions{display:flex;flex-wrap:wrap;gap:14px}
   .hero-art{position:relative;justify-self:end;width:min(420px,100%)}
   .arch{position:relative;aspect-ratio:9/14;border-radius:999px 999px 18px 18px;overflow:hidden;background:#151311;box-shadow:0 40px 120px -30px rgba(201,164,100,.35)}
-  .arch video{width:100%;height:100%;object-fit:cover;transform:scale(1.28);transform-origin:50% 88%}
+  .arch img{width:100%;height:100%;object-fit:cover;object-position:50% 72%;animation:kb 16s ease-in-out infinite alternate}
+  @keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translateY(-2%)}}
   .arch::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(240,223,176,.25);background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45))}
   .arch-frame{position:absolute;inset:-16px;border-radius:999px 999px 26px 26px;border:1px solid rgba(201,164,100,.35);pointer-events:none}
   .badge{position:absolute;left:-58px;bottom:70px;width:132px;height:132px;display:grid;place-items:center}
@@ -181,9 +182,9 @@
   .reels{padding:clamp(90px,12vw,170px) 0;overflow:hidden}
   .reels-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
   .reels-row{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.6vw,22px);margin-top:60px;perspective:1400px}
-  .reel{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#151311;transform-style:preserve-3d;box-shadow:0 30px 60px -30px #000}
-  .reel video{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-  .reel:hover video{transform:scale(1.06)}
+  .reel{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:#151311;transform-style:preserve-3d;box-shadow:0 30px 60px -30px #000}
+  .reel img{width:100%;height:118%;object-fit:cover;margin-top:-9%;transition:scale 1.2s cubic-bezier(.2,.7,.2,1)}
+  .reel:hover img{scale:1.07}
   .reel::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(240,223,176,.16);pointer-events:none}
   .reel:nth-child(even){margin-top:60px}
 
@@ -402,7 +403,7 @@
       </div>
       <div class="hero-art" data-in>
         <div class="arch-frame"></div>
-        <div class="arch"><video src="video/sorriso-1.mp4" poster="img/sorriso-1-poster.jpg" muted loop playsinline autoplay preload="auto" aria-label="Sorriso com lentes de contato dental"></video></div>
+        <div class="arch"><img src="img/detalhe-1.webp" alt="Detalhe de lentes de contato dental" fetchpriority="high"></div>
         <div class="badge">
           <svg viewBox="0 0 132 132" aria-hidden="true"><defs><path id="circ" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#circ">Alves Pezenti • Odontologia • Sorrisos •</textPath></text></svg>
           <span class="mono gold-bg" style="position:relative"></span>
@@ -453,15 +454,15 @@
     </div>
   </section>
 
-  <!-- REELS -->
+  <!-- DETALHES -->
   <section class="reels">
     <div class="wrap">
       <div class="reels-head">
         <div>
-          <span class="eyebrow" data-reveal>Em movimento</span>
-          <h2 class="h2 split-lines">Sorrisos que <span class="gold-text">ganham vida</span></h2>
+          <span class="eyebrow" data-reveal>Em detalhe</span>
+          <h2 class="h2 split-lines">Detalhes que fazem a <span class="gold-text">diferença</span></h2>
         </div>
-        <p class="lead" data-reveal>Naturalidade se percebe em movimento: luz, forma e proporção em harmonia com cada rosto.</p>
+        <p class="lead" data-reveal>Textura, translucidez e forma pensadas dente a dente, para um resultado que simplesmente parece natural.</p>
       </div>
       <div class="reels-row" id="reels"></div>
     </div>
@@ -612,6 +613,7 @@ const ANTES_DEPOIS = [ // fotos de pacientes da clínica (antes / depois)
   ['ba2','wide'],['ba3','wide'],['ba5','tall'],['ba6','tall'],['ba4','wide'],
 ];
 const CASOS = ['caso-11','caso-01','caso-02','caso-03','caso-12','caso-04','caso-05','caso-06','caso-07','caso-08','caso-09','caso-13','caso-10','caso-14'];
+const DETALHES = ['detalhe-2','detalhe-3','detalhe-4','detalhe-5','caso-10']; // fotos marcadas pelo Bruno + macros de casos
 const CLINICA = [['clinica-recepcao','Recepção'],['clinica-sala','Consultório'],['clinica-recepcao2','Sala de espera'],['clinica-sala2','Atendimento'],['clinica-corredor','Ambientes']];
 const MARQUEE = ['Facetas','Lentes em porcelana','Harmonização orofacial','Clareamento','Estética dental','Lentes em resina'];
 /* =================================================== */
@@ -622,7 +624,7 @@ const knob = '<div class="ba-line"></div><div class="ba-knob"><svg viewBox="0 0 
 
 // --- conteúdo gerado ---
 ['mq1','mq2'].forEach((id,k)=>{const items=(k?[...MARQUEE].reverse():MARQUEE).map(t=>`<span>${t}</span>`).join('');$('#'+id).innerHTML=items+items});
-$('#reels').innerHTML=[1,2,3,4,5].map(n=>`<div class="reel" data-cursor="Play"><video src="video/sorriso-${n}.mp4" poster="img/sorriso-${n}-poster.jpg" muted loop playsinline preload="none" aria-label="Vídeo de sorriso ${n}"></video></div>`).join('');
+$('#reels').innerHTML=DETALHES.map((f,i)=>`<figure class="reel"><img src="img/${f}.webp" alt="Detalhe de caso clínico ${i+1}" loading="lazy"></figure>`).join('');
 $('#baGrid').innerHTML=ANTES_DEPOIS.map(([b,c],i)=>`<div class="ba ${c}" data-cursor="Arraste" data-reveal><img src="img/${b}-depois.webp" alt="Depois" loading="lazy"><div class="ba-before"><img src="img/${b}-antes.webp" alt="Antes" loading="lazy"></div><span class="tag l">Antes</span><span class="tag r">Depois</span>${knob}<input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso ${i+1}"></div>`).join('');
 $('#casesTrack').innerHTML=CASOS.map((c,i)=>`<figure class="case${/caso-1[12]/.test(c)?' sq':''}" data-cursor="Ver"><img src="img/${c}.webp" alt="Caso clínico ${i+1}" loading="lazy"><span>${String(i+1).padStart(2,'0')}</span></figure>`).join('');
 $('#tList').innerHTML=TRATAMENTOS.map(([t,d,img,s],i)=>`<a class="t-row" data-img="img/${img}.webp" href="${wa('Olá! Gostaria de saber mais sobre '+t+'.')}" target="_blank" rel="noopener"><span class="n">${String(i+1).padStart(2,'0')}</span><h3>${t}${s?'<em>Destaque</em>':''}</h3><p>${d}</p></a>`).join('');
@@ -644,9 +646,6 @@ $$('[data-wa]').forEach(a=>{a.href=wa(a.dataset.msg);a.target='_blank';a.rel='no
 // --- antes/depois (funciona sem animação) ---
 $$('.ba').forEach(b=>{const r=$('input',b);r.addEventListener('input',()=>b.style.setProperty('--pos',r.value+'%'))});
 
-// --- vídeos tocam só quando visíveis ---
-const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(v.preload==='none')v.preload='auto';v.play().catch(()=>{})}else v.pause()}),{threshold:.25});
-$$('video').forEach(v=>vio.observe(v));
 
 // --- menu mobile ---
 const burger=$('.burger');
@@ -723,7 +722,6 @@ if (reduced) { // sem animação (ou CDN fora do ar): mostra tudo parado
       .to('.gold-line',{yPercent:0,duration:1.3,ease:'expo.out'},'-=1')
       .fromTo('.hero [data-in]',{opacity:0,y:40},{opacity:1,y:0,duration:1.1,ease:'power3.out',stagger:.12},'-=1.1')
       .fromTo('.arch',{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.6,ease:'expo.inOut',clearProps:'clipPath'},'-=1.4')
-      .from('.arch video',{scale:1.4,duration:2,ease:'expo.out'},'-=1.3')
       .from('.arch-frame',{scale:.85,opacity:0,duration:1.4,ease:'expo.out'},'-=1.6');
 
     // hero em parallax ao rolar
@@ -754,8 +752,9 @@ if (reduced) { // sem animação (ou CDN fora do ar): mostra tudo parado
     $$('.ba').forEach(b=>{const r=$('input',b),o={p:50};gsap.timeline({scrollTrigger:{trigger:b,start:'top 75%'},onUpdate:()=>{b.style.setProperty('--pos',o.p+'%');r.value=o.p}})
       .to(o,{p:22,duration:.9,ease:'power2.inOut'}).to(o,{p:78,duration:1.1,ease:'power2.inOut'}).to(o,{p:50,duration:.8,ease:'power2.inOut'})});
 
-    // reels entram em 3D
+    // detalhes entram em 3D e as fotos andam por dentro do quadro
     gsap.from('.reel',{rotateX:28,y:140,opacity:0,duration:1.6,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'#reels',start:'top 85%'}});
+    gsap.fromTo('.reel img',{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:'#reels',start:'top bottom',end:'bottom top',scrub:true}});
 
     // HOF: imagem se abre em círculo
     gsap.fromTo('#hofMedia',{clipPath:'circle(12% at 50% 50%)'},{clipPath:'circle(75% at 50% 50%)',ease:'none',scrollTrigger:{trigger:'#hofMedia',start:'top 90%',end:'center 50%',scrub:true}});
