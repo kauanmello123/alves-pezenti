@@ -177,6 +177,14 @@
   .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;touch-action:pan-y}
   .ba .tag{position:absolute;top:16px;padding:7px 14px;border-radius:99px;background:rgba(10,10,10,.65);backdrop-filter:blur(8px);font:500 10px Montserrat;letter-spacing:.3em;text-transform:uppercase;color:var(--txt);pointer-events:none}
   .ba .tag.l{left:16px}.ba .tag.r{right:16px;color:var(--g3)}
+  .tag.b{position:absolute;left:16px;bottom:16px;top:auto;padding:7px 14px;border-radius:99px;background:rgba(10,10,10,.65);backdrop-filter:blur(8px);font:500 10px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:var(--g3);pointer-events:none}
+  .hof-res{margin-top:clamp(70px,9vw,120px)}
+  .hof-res-head{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .hof-res-head p{color:#6d6861;font-size:14px}
+  .hof-res .ba-grid{margin-top:34px}
+  .ba-grid .ba.third,.ba-grid figure.third{grid-column:span 4;aspect-ratio:3/4}
+  .ba-grid figure.third{position:relative;border-radius:6px;overflow:hidden;background:#ddd6ca}
+  .ba-grid figure.third img{width:100%;height:100%;object-fit:cover}
 
   /* ===== Reels ===== */
   .reels{padding:clamp(90px,12vw,170px) 0;overflow:hidden}
@@ -316,6 +324,8 @@
     .reel:nth-child(even){margin-top:0}
     .ba-grid .ba,.ba-grid .ba.wide{grid-column:span 12}
     .ba-grid .ba.tall{grid-column:span 6}
+    .ba-grid .ba.third{grid-column:span 12}
+    .ba-grid figure.third{grid-column:span 6}
     .cases-track{overflow-x:auto;width:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
     .case{scroll-snap-align:start}
     .progress{display:none}
@@ -329,6 +339,8 @@
     .reels-row{grid-auto-columns:70%}
     .team-grid{grid-template-columns:1fr}
     .hof-list{grid-template-columns:1fr}
+    .ba-grid .ba.tall{grid-column:span 12}
+    .ba-grid figure.third{grid-column:span 12}
     .stats{grid-template-columns:1fr;gap:0}
     .info li{grid-template-columns:1fr;gap:4px}
     .stack-card{height:62vh;top:14vh}
@@ -448,7 +460,7 @@
       </div>
       <div class="feat-media">
         <div><div class="clip" data-clip style="aspect-ratio:1"><img src="img/caso-12.webp" alt="Paciente sorrindo após lentes de contato dental" loading="lazy"></div><div class="cap"><span>Resultado</span><span>Lentes de contato dental</span></div></div>
-        <div><div class="ba" data-cursor="Arraste" style="aspect-ratio:4/3"><img src="img/ba1-depois.webp" alt="Depois" loading="lazy"><div class="ba-before"><img src="img/ba1-antes.webp" alt="Antes" loading="lazy"></div><span class="tag l">Antes</span><span class="tag r">Depois</span><div class="ba-line"></div><div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois"></div><div class="cap"><span>Arraste para comparar</span><span>Antes · Depois</span></div></div>
+        <div><div class="ba" data-cursor="Arraste" style="aspect-ratio:4/3"><img src="img/ad-p1-depois.webp" alt="Depois" loading="lazy"><div class="ba-before"><img src="img/ad-p1-antes.webp" alt="Antes" loading="lazy"></div><span class="tag l">Antes</span><span class="tag r">Depois</span><div class="ba-line"></div><div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois"></div><div class="cap"><span>Arraste para comparar</span><span>Antes · Depois</span></div></div>
         <div><div class="clip" data-clip style="aspect-ratio:1"><img src="img/caso-11.webp" alt="Paciente sorrindo e detalhe das lentes" loading="lazy"></div><div class="cap"><span>Resultado</span><span>Estética dental</span></div></div>
       </div>
     </div>
@@ -484,6 +496,13 @@
         </ul>
         <a class="btn btn-line magnetic" data-reveal data-wa data-msg="Olá! Gostaria de agendar uma avaliação de harmonização orofacial." href="#contato">Agendar avaliação HOF</a>
       </div>
+    </div>
+    <div class="wrap hof-res">
+      <div class="hof-res-head">
+        <span class="eyebrow" data-reveal>Resultados de harmonização</span>
+        <p data-reveal>Arraste a linha dourada para comparar o antes e o depois.</p>
+      </div>
+      <div class="ba-grid" id="hofGrid"></div>
     </div>
   </section>
 
@@ -598,7 +617,7 @@ const TRATAMENTOS = [ // [nome, descrição, imagem, destaque]
   ['Lentes em Resina','Transformação estética rápida e acessível.','caso-06',1],
   ['Harmonização Orofacial','Equilíbrio facial com procedimentos minimamente invasivos.','clinica-hof',1],
   ['Estética Dental','Cor, forma e proporção em harmonia com o seu rosto.','caso-11'],
-  ['Clareamento Dental','Dentes mais brancos com segurança e acompanhamento.','ba1-depois'],
+  ['Clareamento Dental','Dentes mais brancos com segurança e acompanhamento.','ad-p1-depois'],
   ['Dentística','Restaurações estéticas que devolvem forma e função.','caso-05'],
   ['Clínica Geral','Prevenção, limpeza e check-ups regulares.','clinica-sala2'],
   ['Ortodontia','Alinhamento dos dentes com aparelhos e alinhadores.','clinica-sala'],
@@ -610,7 +629,11 @@ const TRATAMENTOS = [ // [nome, descrição, imagem, destaque]
   ['Odontopediatria','Atendimento acolhedor para os pequenos.','clinica-recepcao'],
 ];
 const ANTES_DEPOIS = [ // fotos de pacientes da clínica (antes / depois)
-  ['ba2','wide'],['ba3','wide'],['ba5','tall'],['ba6','tall'],['ba4','wide'],
+  ['ad-p2','wide'],['ad-p3','wide'],['ad-p5','tall'],['ad-p6','tall'],['ad-p4','wide'],
+];
+const HOF = [ // [arquivo, formato, tratamento]; 'foto' = arte pronta da clínica (antes e depois na mesma imagem)
+  ['ad-h1','wide','Toxina botulínica'],['ad-h2','wide','Preenchimento labial'],
+  ['ad-h4','third','Harmonização facial'],['hof-face2','foto','Harmonização facial'],['hof-labios2','foto','Preenchimento labial'],
 ];
 const CASOS = ['caso-11','caso-01','caso-02','caso-03','caso-12','caso-04','caso-05','caso-06','caso-07','caso-08','caso-09','caso-13','caso-10','caso-14'];
 const DETALHES = ['detalhe-2','detalhe-7','detalhe-4','detalhe-8','caso-10']; // fotos marcadas pelo Bruno + macros de casos
@@ -625,6 +648,9 @@ const knob = '<div class="ba-line"></div><div class="ba-knob"><svg viewBox="0 0 
 // --- conteúdo gerado ---
 ['mq1','mq2'].forEach((id,k)=>{const items=(k?[...MARQUEE].reverse():MARQUEE).map(t=>`<span>${t}</span>`).join('');$('#'+id).innerHTML=items+items});
 $('#reels').innerHTML=DETALHES.map((f,i)=>`<figure class="reel"><img src="img/${f}.webp" alt="Detalhe de caso clínico ${i+1}" loading="lazy"></figure>`).join('');
+$('#hofGrid').innerHTML=HOF.map(([b,c,t],i)=>c==='foto'
+  ? `<figure class="third" data-reveal><img src="img/${b}.webp" alt="Antes e depois: ${t}" loading="lazy"><span class="tag b">${t}</span></figure>`
+  : `<div class="ba ${c}" data-cursor="Arraste" data-reveal><img src="img/${b}-depois.webp" alt="Depois" loading="lazy"><div class="ba-before"><img src="img/${b}-antes.webp" alt="Antes" loading="lazy"></div><span class="tag l">Antes</span><span class="tag r">Depois</span><span class="tag b">${t}</span>${knob}<input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois: ${t}"></div>`).join('');
 $('#baGrid').innerHTML=ANTES_DEPOIS.map(([b,c],i)=>`<div class="ba ${c}" data-cursor="Arraste" data-reveal><img src="img/${b}-depois.webp" alt="Depois" loading="lazy"><div class="ba-before"><img src="img/${b}-antes.webp" alt="Antes" loading="lazy"></div><span class="tag l">Antes</span><span class="tag r">Depois</span>${knob}<input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso ${i+1}"></div>`).join('');
 $('#casesTrack').innerHTML=CASOS.map((c,i)=>`<figure class="case${/caso-1[12]/.test(c)?' sq':''}" data-cursor="Ver"><img src="img/${c}.webp" alt="Caso clínico ${i+1}" loading="lazy"><span>${String(i+1).padStart(2,'0')}</span></figure>`).join('');
 $('#tList').innerHTML=TRATAMENTOS.map(([t,d,img,s],i)=>`<a class="t-row" data-img="img/${img}.webp" href="${wa('Olá! Gostaria de saber mais sobre '+t+'.')}" target="_blank" rel="noopener"><span class="n">${String(i+1).padStart(2,'0')}</span><h3>${t}${s?'<em>Destaque</em>':''}</h3><p>${d}</p></a>`).join('');
